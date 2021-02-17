@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "tabela-periodica.apps.tabelaConfig",
+    "estequiometria.apps.EstequiometriaConfig",
 ]
 
 MIDDLEWARE = [
