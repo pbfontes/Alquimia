@@ -8,7 +8,9 @@ from .models import Pesquisa
 
 def index(request):
     pesquisas_anteriores = Pesquisa.objects.order_by("-data_da_pesquisa")
-    contexto = {"pesquisas_anteriores": pesquisas_anteriores}
+    contexto = {
+        "pesquisas_anteriores": pesquisas_anteriores
+    }  # relaciona as variaveis do template com os objetos pythons aqui do views
     return render(request, "estequiometria/index.html", contexto)
 
 

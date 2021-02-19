@@ -1,11 +1,24 @@
-{% if pesquisas_anteriores %}
-<ul>
-  {% for pesquisa in pesquisas_anteriores %}
-  <li>
-    <a href="/estequiometria/{{ pesquisa.id }}/visualizar/">{{ pesquisa }}</a>
-  </li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>Não há pesquisas anteriores.</p>
-{% endif %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My test page</title>
+  </head>
+  <body>
+    {% if pesquisas_anteriores %}
+    <ul>
+      {% for pesquisa in pesquisas_anteriores %}
+      <li>
+        <!-- sintaxe: (url) (name space do app 'app_name'):('name' do
+        path no arquivo 'urls') (variavel que diferencias as urls) -->
+        <a href="{% url 'estequiometria:pesquisa_anterior' pesquisa.id %}">
+          {{ pesquisa }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>Não há pesquisas anteriores.</p>
+    {% endif %}
+  </body>
+</html>
