@@ -7,7 +7,9 @@ from .models import Pesquisa
 
 
 def index(request):
-    return HttpResponse("index da estequiometria")
+    pesquisas_anteriores = Pesquisa.objects.order_by("-data_da_pesquisa")
+    contexto = {"pesquisas_anteriores": pesquisas_anteriores}
+    return render(request, "estequiometria/index.html", contexto)
 
 
 def pesquisa_anterior(request, id_pesquisa):

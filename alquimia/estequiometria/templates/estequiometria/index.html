@@ -1,0 +1,11 @@
+{% if pesquisas_anteriores %}
+<ul>
+  {% for pesquisa in pesquisas_anteriores %}
+  <li>
+    <a href="/estequiometria/{{ pesquisa.id }}/visualizar/">{{ pesquisa }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Não há pesquisas anteriores.</p>
+{% endif %}
