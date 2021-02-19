@@ -15,6 +15,8 @@ def index(request):
 
 
 def pesquisa_anterior(request, id_pesquisa):
+    # seria meneiro se tivessa algum tipo de animação centralizando a caixinha com resumo (igual o google keep)
+    # ai poderia ter um botão de ver mais dealhes
     pesquisa = Pesquisa.objects.get(id=id_pesquisa)
     return HttpResponse(pesquisa)
 
@@ -27,3 +29,8 @@ def pesquisar(request):
     print(request.POST["reagentes"])
     print(request.POST["produtos"])
     return HttpResponseRedirect(reverse("estequiometria:index"))  # reverse é necessário
+
+
+def resultado(request, id_pesquisa):
+    # vai retornar o render das informações da pesquisa com o template
+    return HttpResponse()
