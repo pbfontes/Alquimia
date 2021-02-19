@@ -12,4 +12,5 @@ urlpatterns = [
         # o valor 'name' é chamado pela template tag {% url %}
         name="pesquisa_anterior",
     ),
+    path("pesquisar/", views.pesquisar, name="pesquisar"),
 ]

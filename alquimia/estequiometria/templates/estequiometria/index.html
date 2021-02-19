@@ -2,23 +2,52 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>My test page</title>
+    <title>Alquimia</title>
   </head>
+
   <body>
-    {% if pesquisas_anteriores %}
-    <ul>
-      {% for pesquisa in pesquisas_anteriores %}
-      <li>
-        <!-- sintaxe: (url) (name space do app 'app_name'):('name' do
-        path no arquivo 'urls') (variavel que diferencias as urls) -->
-        <a href="{% url 'estequiometria:pesquisa_anterior' pesquisa.id %}">
-          {{ pesquisa }}
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p>Não há pesquisas anteriores.</p>
-    {% endif %}
+    <div style='float: left'>
+      <h2>Calculadora de estequiometria</h2>
+      <form action={% url 'estequiometria:pesquisar' %} method='post'>
+      {% csrf_token %}
+        <div style='float: left'>
+          <label for="reagentes">Reagentes</label><br>
+          <input type="text" name='reagentes'>
+        </div>
+        <div style='float: right'>
+          <label for="produtos">Produtos</label><br>
+          <input type="text" name='produtos'>
+        </div>
+        <div style='clear: left'>
+          <input type="submit" value='Calcular'>
+        </div>
+        
+      </form>
+    </div>
+    <div
+      style="
+        border: 2px solid black;
+        float: right;
+        padding-right: 30px;
+        border-radius: 5px;
+      "
+    >
+      <h3 style="margin-left: 20px">Pesquisas Anteriores</h3>
+      {% if pesquisas_anteriores %}
+      <ul>
+        {% for pesquisa in pesquisas_anteriores %}
+        <li>
+          <!-- sintaxe: (url) (name space do app 'app_name'):('name' do
+          path no arquivo 'urls') (variavel que diferencias as urls) -->
+          <a href="{% url 'estequiometria:pesquisa_anterior' pesquisa.id %}">
+            {{ pesquisa }} <i class="fas fa-long-arrow-alt-right"></i>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>Não há pesquisas anteriores.</p>
+      {% endif %}
+    </div>
   </body>
 </html>

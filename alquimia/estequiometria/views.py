@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
+from .models import Pesquisa
+from django.urls import reverse
 
 # Create your views here.
-from django.http import HttpResponse
-
-from .models import Pesquisa
 
 
 def index(request):
@@ -17,3 +17,13 @@ def index(request):
 def pesquisa_anterior(request, id_pesquisa):
     pesquisa = Pesquisa.objects.get(id=id_pesquisa)
     return HttpResponse(pesquisa)
+
+
+def pesquisar(request):
+    # validar se os heagentes e produtos digitados são validos
+    # capturar as informações e executar as contas
+    # redirecionar para a página de resultado
+    # lá teremos a opção de salvar a pesquisa
+    print(request.POST["reagentes"])
+    print(request.POST["produtos"])
+    return HttpResponseRedirect(reverse("estequiometria:index"))  # reverse é necessário
