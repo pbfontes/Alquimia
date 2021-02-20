@@ -23,7 +23,12 @@ def pesquisa_anterior(request, id_pesquisa):
 
 def pesquisar(request):
     # validar se os heagentes e produtos digitados são validos
-    # capturar as informações e executar as contas
+
+    # verificar se os elementos entre espaços ou sinal de + estão presentes na tabela periódica
+    # Adotar os upper e lower cases - eviat confusão em casos como CaAl, nseei
+    # verifricar se todos os elementos separados por + estão presentes do outro lado da equação
+
+    # capturar as informações, balancear a reação e executar as contas
     # redirecionar para a página de resultado
     # lá teremos a opção de salvar a pesquisa
     print(request.POST["reagentes"])
