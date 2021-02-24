@@ -15,3 +15,13 @@ class Pesquisa(models.Model):
     def pesquisado_recentemente(self):
         # a pesquisa ocorreu ha menos de 3 dias?
         return self.data_da_pesquisa >= timezone.now() - timedelta(days=3)
+
+
+class TabelaPeriodica(models.Model):
+    atomic_number = models.IntegerField()
+    symbol = models.CharField(max_length=2)
+    name = models.CharField(max_length=20)
+    atomic_mass = models.DecimalField(max_digits=6, decimal_places=3)
+
+    def __str__(self):
+        return self.name
